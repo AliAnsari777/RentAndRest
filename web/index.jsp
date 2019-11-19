@@ -11,6 +11,9 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
-  </body>
+    <h1>
+      This is sample page
+    </h1>
+  <p><a href="/RentAndRest/room/addRoom">add room link</a></p>
+</body>
 </html>

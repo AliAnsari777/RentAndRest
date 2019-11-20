@@ -3,6 +3,7 @@ package Controllers;
 import DAO.RoomDAO;
 import Models.Room;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Room", urlPatterns = "/room/addRoom")
+@WebServlet(name = "Room", urlPatterns = "/Room")
 public class RoomController extends HttpServlet {
     RoomDAO room;
 
@@ -20,7 +21,7 @@ public class RoomController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("This is working");
+
     }
 
     @Override
@@ -28,9 +29,17 @@ public class RoomController extends HttpServlet {
         String number = (String)req.getParameter("number");
         String title = (String)req.getParameter("title");
         String description = (String)req.getParameter("description");
-        Room roomObject = new Room(number,title,description);
-        room.addRoom(number,title,description);
-        req.setAttribute("roomInfo", roomObject);
-        System.out.println("This is working in post");
+        float price = Float.parseFloat(req.getParameter("cost"));
+        String imageUrl = (String)req.getParameter("fileupload");
+        Room roomObject = new Room(number,title,description,imageUrl,price);
+        boolean result = room.addRoom(roomObject);
+
+        if (result){
+            req.setAttribute("msg", "yes");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("addroom.jsp");
+            dispatcher.forward(req,resp);
+        }else {
+            resp.sendRedirect("addroom.jsp");
+        }
     }
 }

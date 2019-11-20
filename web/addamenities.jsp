@@ -27,38 +27,20 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
+    <style>
+        li.nav-item{
+            padding-right: 20px;
+        }
+        #navbarColor01{
+            margin-left: 3%;
+        }
+    </style>
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <%@ include file="fragment/header.html" %>
 
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Facilities
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="addroom.html">Add Rooms</a>
-                        <a class="dropdown-item" href="manageguest.html">Manage Guest</a>
-                        <a class="dropdown-item" href="addamenities.html">Add Amenities</a>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>

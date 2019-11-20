@@ -1,5 +1,10 @@
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,67 +29,45 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
-
+    <style>
+        li.nav-item{
+            padding-right: 20px;
+        }
+        #navbarColor01{
+            margin-left: 3%;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <%@ include file="fragment/header.html" %>
 
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Facilities
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="addroom.html">Add Rooms</a>
-                        <a class="dropdown-item" href="manageguest.html">Manage Guest</a>
-                        <a class="dropdown-item" href="addamenities.html">Add Amenities</a>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-    <!-- Page Preloder -->
+<!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
     <div class="container">
-        <form>
-            <div class="form-group">
-                <label>Room Name</label>
-                <input type="text" class="form-control" /></div>
+        <form action="/RentAndRest/Room" method="post">
             <div class="form-group">
                 <label>Room Number</label>
-                <input type="text" class="form-control" /></div>
+                <input type="text" name="number" class="form-control" /></div>
             <div class="form-group">
                 <label>Room Title</label>
-                <input type="text" class="form-control" /></div>
+                <input type="text" name="title" class="form-control" /></div>
             <div class="form-group">
                 <label>Room Description</label>
-                <input type="text" class="form-control" /></div>
+                <input type="text" name="description" class="form-control" /></div>
             <div class="form-group">
                 <label>Cost</label>
-                <input type="text" class="form-control" /></div>
+                <input type="text" name="cost" class="form-control" /></div>
 
-    <input type="file" name="fileupload" value="fileupload" id="fileupload">
-    <label for="fileupload"> Select a file to upload</label> <br><input type="image" src="/wp-content/uploads/sendform.png"
-        width="100">
-        
-    <button type="submit" class="btn btn-primary" >submit</button>
-    </form>
+            <input type="file" name="fileupload" value="fileupload" id="fileupload">
+            <label for="fileupload"> Select a file to upload</label>
+            <br><input type="image" src="/wp-content/uploads/sendform.png" width="100">
+            <input hidden type="text" id="msg" value="${msg}" />
+            <button type="submit" class="btn btn-primary" >submit</button>
+        </form>
     </div>
 
     <footer class="footer fixed-bottom container">
@@ -100,6 +83,6 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
 </body>
-
 </html>

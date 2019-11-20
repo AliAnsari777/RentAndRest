@@ -42,9 +42,7 @@
     </style>
     <script>
         $(document).ready(function () {
-            $.ajax({
-                url: "/availableRooms"
-            })
+
         })
     </script>
 </head>
@@ -62,17 +60,27 @@
         <form action="/RentAndRest/Booking" method="post" id="booking">
             <div class="form-group">
                 <label>Room ID</label>
-                <select class="form-control" id="exampleSelect1">
-                    <c:forEach var="room" items="${roomList}" varStatus="iteration">
-                        <option>
-                            <c:out value="${room}"></c:out>
-                        </option>
+                <select class="form-control" name="roomId" id="exampleSelect1">
+                   <c:forEach var="room" items="${roomList}">
+                        <tr>
+                            <option value="<c:out value="${room.id}"></c:out>">
+                                <c:out value="${room.id}    ${room.title}"></c:out>
+                            </option>
+                        </tr>
                     </c:forEach>
                 </select>
             </div>
             <div class="form-group">
                 <label>Guest ID</label>
-                <input type="text" name="guestId" class="form-control" /></div>
+                <select class="form-control" name="guestId" id="exampleSelect2">
+                    <c:forEach var="guest" items="${guestList}">
+                        <tr>
+                            <option value="<c:out value="${guest.id}"></c:out>"><c:out value="${guest.firstName}"></c:out></option>
+                        </tr>
+                    </c:forEach>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label>Number of guests</label>
                 <input type="text" name="numberOfGuests" class="form-control" /></div>

@@ -31,7 +31,8 @@ public class RoomController extends HttpServlet {
         String description = (String)req.getParameter("description");
         float price = Float.parseFloat(req.getParameter("cost"));
         String imageUrl = (String)req.getParameter("fileupload");
-        Room roomObject = new Room(number,title,description,imageUrl,price);
+        int maxNumber = Integer.parseInt(req.getParameter("maxNumberOfGuests"));
+        Room roomObject = new Room(number,title,description,imageUrl,price, maxNumber);
         boolean result = room.addRoom(roomObject);
 
         if (result){

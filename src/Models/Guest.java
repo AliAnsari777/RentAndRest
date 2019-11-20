@@ -1,6 +1,7 @@
 package Models;
 
 public class Guest  {
+    private int id;
     private String firstName;
     private String lastName;
     private String docType;
@@ -11,6 +12,19 @@ public class Guest  {
     private String note;
 
     public Guest(){}
+
+    public Guest(int id, String  firstName){
+        this.id = id;
+        this.firstName = firstName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Guest(String firstName, String lastName, String docType, String docNumber,
                  String procedence, String language, String note) {

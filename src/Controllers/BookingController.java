@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -34,10 +35,13 @@ public class BookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Room> rooms;
-        List<Guest> guests = new ArrayList<>();
-        System.out.println("this is get of booking controller");
+        List<Guest> guests;
+
         rooms = roomList.availableRooms();
+        guests = guestList.guestList();
+
         req.setAttribute("roomList",rooms);
+        req.setAttribute("guestList", guests);
         RequestDispatcher dispatcher = req.getRequestDispatcher("booking.jsp");
         dispatcher.forward(req,resp);
     }
@@ -54,9 +58,11 @@ public class BookingController extends HttpServlet {
         Booking book = new Booking(roomId,guestId,numberOfGuest,checkinDate,checkinTime,checkoutDate,checkoutTime);
         boolean result = booking.addBooking(book);
         if (result){
-            req.setAttribute("msg", "yes");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("booking.jsp");
-            dispatcher.forward(req,resp);
+            HttpSession session = req.getSession();
+            session.setAttribute("msg", "yes");
+            resp.sendRedirect("availableRooms");
+//            RequestDispatcher dispatcher = req.getRequestDispatcher("/availableRooms");
+//            dispatcher.forward(req,resp);
         }else {
             resp.sendRedirect("booking.jsp");
         }

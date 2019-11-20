@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuestDAO {
     DatabaseConnection connect;
@@ -59,5 +61,24 @@ public class GuestDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<Guest> guestList(){
+        List<Guest> guestList = new ArrayList<>();
+
+        try {
+            Connection connection = connect.databaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("select id, guestName from guests");
+            ResultSet result = statement.executeQuery();
+            while (result.next()){
+                int id = result.getInt("id");
+                String guestName = result.getString("guestName");
+                Guest obj = new Guest(id, guestName);
+                guestList.add(obj);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return guestList;
     }
 }

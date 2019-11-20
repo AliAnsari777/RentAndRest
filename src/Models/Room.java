@@ -1,22 +1,39 @@
 package Models;
 
 public class Room {
+    private int id;
     private String number;
     private String title;
     private String description;
     private String imageUrl;
     private float price;
+    private int maxNumberOfGuest;
+
 
     public Room(){
 
     };
 
-    public Room(String number, String title, String description, String imgUrl, float price) {
+    public Room(int id, String title){
+        this.id = id;
+        this.title = title;
+    }
+
+    public Room(String number, String title, String description, String imgUrl, float price, int maxNumberOfGuest) {
         this.number = number;
         this.title = title;
         this.description = description;
         this.imageUrl = imgUrl;
         this.price = price;
+        this.maxNumberOfGuest = maxNumberOfGuest;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNumber() {
@@ -57,5 +74,13 @@ public class Room {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public int getMaxNumberOfGuest() {
+        return maxNumberOfGuest;
+    }
+
+    public void setMaxNumberOfGuest(int maxNumberOfGuest) {
+        this.maxNumberOfGuest = maxNumberOfGuest;
     }
 }

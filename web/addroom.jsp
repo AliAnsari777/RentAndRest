@@ -59,6 +59,9 @@
                 <label>Room Description</label>
                 <input type="text" name="description" class="form-control" /></div>
             <div class="form-group">
+                <label>Maximum number of Guests</label>
+                <input type="number" name="maxNumberOfGuests" class="form-control" /></div>
+            <div class="form-group">
                 <label>Cost</label>
                 <input type="text" name="cost" class="form-control" /></div>
 

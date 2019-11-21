@@ -10,20 +10,13 @@ public class Guest  {
     private String procedence;
     private String language;
     private String note;
+    private String guestName;
 
     public Guest(){}
 
     public Guest(int id, String  firstName){
         this.id = id;
         this.firstName = firstName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Guest(String firstName, String lastName, String docType, String docNumber,
@@ -35,6 +28,57 @@ public class Guest  {
         this.procedence = procedence;
         this.language = language;
         this.note = note;
+    }
+
+    public Guest(int id,String firstName, String lastName, String docType, String docNumber,
+                 String procedence, String language, String note,String guestName) {
+        this.id=id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.docType = docType;
+        this.docNumber = docNumber;
+        this.procedence = procedence;
+        this.language = language;
+        this.note = note;
+        this.guestName=guestName;
+    }
+    public Guest(String firstName, String lastName, String docType, String docNumber,
+                 float rating,String procedence, String language, String note,String guestName) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.docType = docType;
+        this.docNumber = docNumber;
+        this.procedence = procedence;
+        this.language = language;
+        this.rating=rating;
+        this.note = note;
+        this.guestName=guestName;
+    }
+    public Guest(int id,String guestName,float rating, String procedence, String language, String notes){
+        this.id = id;
+        this.rating = rating;
+        this.procedence = procedence;
+        this.language = language;
+        this.note = notes;
+        this.guestName=guestName;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getGuestName() {
+        return guestName;
+    }
+
+    public void setGuestName(String guestName) {
+        this.guestName = guestName;
     }
 
     public String getFirstName() {

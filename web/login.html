@@ -30,11 +30,10 @@
 </head>
 
 <body>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-				<form class="login100-form validate-form flex-sb flex-w">
+				<form class="login100-form validate-form flex-sb flex-w" action="login" method="post">
 					<span class="login100-form-title p-b-32">
 						Account Login
 					</span>
@@ -54,7 +53,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="password">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -66,6 +65,11 @@
 							</label>
 						</div>
 
+						<div>
+							<a href="signUp.jsp" class="txt3">
+								Sign Up
+							</a>
+						</div>
 						<div>
 							<a href="#" class="txt3">
 								Forgot Password?
@@ -105,5 +109,4 @@
 	<script src="login/js/main.js"></script>
 
 </body>
-
 </html>

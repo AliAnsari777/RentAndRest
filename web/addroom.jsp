@@ -1,11 +1,11 @@
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:if test="${logged != 'OK'}">
+    <c:redirect url="login.html"></c:redirect>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Hotel Template">
@@ -36,6 +36,9 @@
         #navbarColor01{
             margin-left: 3%;
         }
+        div.container{
+            margin: 5%;
+        }
     </style>
 </head>
 
@@ -48,26 +51,25 @@
     </div>
 
     <div class="container">
-        <form action="/RentAndRest/Room" method="post">
+        <form action="AddRoom" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Room Number</label>
-                <input type="text" name="number" class="form-control" /></div>
+                <input type="text" name="number" class="form-control" required/></div>
             <div class="form-group">
                 <label>Room Title</label>
-                <input type="text" name="title" class="form-control" /></div>
+                <input type="text" name="title" class="form-control" required/></div>
             <div class="form-group">
                 <label>Room Description</label>
-                <input type="text" name="description" class="form-control" /></div>
+                <input type="text" name="description" class="form-control" required /></div>
             <div class="form-group">
                 <label>Maximum number of Guests</label>
-                <input type="number" name="maxNumberOfGuests" class="form-control" /></div>
+                <input type="number" name="maxNumberOfGuests" class="form-control" required/></div>
             <div class="form-group">
                 <label>Cost</label>
-                <input type="text" name="cost" class="form-control" /></div>
+                <input type="text" name="cost" class="form-control" required/></div>
 
             <input type="file" name="fileupload" value="fileupload" id="fileupload">
             <label for="fileupload"> Select a file to upload</label>
-            <br><input type="image" src="/wp-content/uploads/sendform.png" width="100">
             <input hidden type="text" id="msg" value="${msg}" />
             <button type="submit" class="btn btn-primary" >submit</button>
         </form>

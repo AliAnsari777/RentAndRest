@@ -3,6 +3,8 @@ $(document).ready(function () {
         let val = $("#msg").val();
         if(val == "yes"){
             alert("Form submitted successfully")
+            $("#msg").val("");
+            val = "";
         }
     }
     setTimeout(msg,1500);

@@ -1,5 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:if test="${logged != 'OK'}">
+    <c:redirect url="login.html"></c:redirect>
+</c:if>
+
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -35,9 +41,7 @@
             margin-left: 3%;
         }
     </style>
-
 </head>
-
 <body>
     <%@ include file="fragment/header.html" %>
 
@@ -64,5 +68,4 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 </body>
-
 </html>

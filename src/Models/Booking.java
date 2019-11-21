@@ -11,6 +11,7 @@ public class Booking {
     private LocalTime checkinTime;
     private LocalDate checkoutDate;
     private LocalTime checkoutTime;
+    private int id;
 
     public Booking(){
 
@@ -25,6 +26,26 @@ public class Booking {
         this.checkinTime = checkinTime;
         this.checkoutDate = checkoutDate;
         this.checkoutTime = checkoutTime;
+    }
+
+    public Booking(int id,int roomId, int guestId, int numberOfGuests, LocalDate checkinDate, LocalTime checkinTime,
+                   LocalDate checkoutDate, LocalTime checkoutTime) {
+        this.id=id;
+        this.roomId = roomId;
+        this.guestId = guestId;
+        this.numberOfGuests = numberOfGuests;
+        this.checkinDate = checkinDate;
+        this.checkinTime = checkinTime;
+        this.checkoutDate = checkoutDate;
+        this.checkoutTime = checkoutTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getRoomId() {

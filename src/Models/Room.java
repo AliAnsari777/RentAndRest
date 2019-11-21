@@ -9,14 +9,27 @@ public class Room {
     private float price;
     private int maxNumberOfGuest;
 
-
-    public Room(){
-
-    };
+    public Room(){};
 
     public Room(int id, String title){
         this.id = id;
         this.title = title;
+    }
+
+    public Room(int id, String number, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.number = number;
+        this.description = description;
+    }
+
+    public Room(int id, String number, String title, String description, float price, int maxGuests) {
+        this.id = id;
+        this.title = title;
+        this.number = number;
+        this.description = description;
+        this.price = price;
+        this.maxNumberOfGuest = maxGuests;
     }
 
     public Room(String number, String title, String description, String imgUrl, float price, int maxNumberOfGuest) {

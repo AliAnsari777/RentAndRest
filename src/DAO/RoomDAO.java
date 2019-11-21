@@ -16,7 +16,6 @@ public class RoomDAO {
         this.connect = new DatabaseConnection();
     }
 
-
     public boolean addRoom(Room room){
         try {
             Connection connection = connect.databaseConnection.getConnection();
@@ -55,5 +54,81 @@ public class RoomDAO {
             e.printStackTrace();
         }
         return roomsList;
+    }
+
+    public List<Room> getAllRooms() {
+        List<Room> listOfRooms = new ArrayList<>();
+        try {
+            Connection connection = connect.databaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * From rooms");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = Integer.parseInt(resultSet.getString("id"));
+                String number = resultSet.getString("number");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                Room obj = new Room(id, number, title, description);
+                listOfRooms.add(obj);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listOfRooms;
+
+    }
+
+    public Room editSpacificRoom(Room room) {
+        try {
+            Connection connection = connect.databaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE rooms SET  number=?,title=?,description=?,maxNumGuests=?,price=? WHERE id=?");
+            statement.setString(1, room.getNumber());
+            statement.setString(2, room.getTitle());
+            statement.setString(3, room.getDescription());
+            statement.setInt(4, room.getMaxNumberOfGuest());
+            statement.setFloat(5,room.getPrice());
+            statement.setInt(6,room.getId());
+            statement.executeUpdate();
+            return room;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Room getRoomByID(int id) {
+        System.out.println("id: " + id);
+        Room room = null;
+        try {
+            Connection connection = connect.databaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM rooms WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String number = resultSet.getString("number");
+                String title = resultSet.getString("title");
+                String description = resultSet.getString("description");
+                int price = resultSet.getInt("price");
+                int maxGuests = resultSet.getInt("maxNumGuests");
+                room = new Room(id, number, title, description, price, maxGuests);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return room;
+    }
+
+    public boolean deleteRoomByID(int id) {
+        boolean rowDeleted=false;
+        try {
+            Connection connection = connect.databaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM rooms WHERE id = ?");
+            statement.setInt(1, id);
+            rowDeleted = statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rowDeleted;
     }
 }

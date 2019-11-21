@@ -18,9 +18,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Taviraj:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -43,57 +40,41 @@
         div.container{
             margin: 5%;
         }
-        button.btn-primary{
-            margin: 3%;
-        }
     </style>
 </head>
 
 <body>
     <%@ include file="fragment/header.html" %>
 
-    <!-- Page Preloder -->
+<!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
     <div class="container">
-        <legend >Add new guest </legend>
-        <form action="addGuestController" method="post">
+        <form action="EditSpacificRoom?id=${id}" method="post">
+            <div class="form-group">
+                <label>Room Number</label>
+                <input type="text" name="number"  required value="${number}" class="form-control"/></div>
+            <div class="form-group">
+                <label>Room Title</label>
+                <input type="text" name="title" required class="form-control" value="${title}" /></div>
+            <div class="form-group">
+                <label>Room Description</label>
+                <input type="text" name="description" required class="form-control" value="${description}" /></div>
+            <div class="form-group">
+                <label>Maximum number of Guests</label>
+                <input type="number" name="maxNumberOfGuests"  required class="form-control" value="${maxguests}"/></div>
+            <div class="form-group">
+                <label>Cost</label>
+                <input type="text" name="cost" class="form-control" required value="${price}"/></div>
 
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName"  id="firstName" class="form-control" required/></div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text"  id="lastName" name="lastName" class="form-control" required /></div>
-            <div class="form-group">
-                <label for="docType">Doc Type</label>
-                <input type="text" name="docType" id="docType" class="form-control" required/></div>
-            <div class="form-group">
-                <label for="docNumber">Doc Number</label>
-                <input type="text" name="docNumber" id="docNumber" class="form-control" required /></div>
-            <div class="form-group">
-                <label for="rating">rating</label>
-                <input type="number" name="rating"  id="rating"class="form-control" /></div>
-            <div class="form-group">
-                <label for="procedence">procedence</label>
-                <input type="text" name="procedence"  id="procedence"class="form-control" required/></div>
-            <div class="form-group">
-                <label for="language">language</label>
-                <input type="text" name="language"  id="language"class="form-control"  required/></div>
-            <div class="form-group">
-                <label for="note">note</label>
-                <input type="text" name="note"  id="note"class="form-control" required/></div>
-
-            <div><label for="guestName">guest Name</label>
-            <input type="text" name="guestName"  id="guestName"class="form-control" required/></div>
+            <input type="file" name="fileupload" value="fileupload" id="fileupload">
 
             <input hidden type="text" id="msg" value="${msg}" />
             <button type="submit" class="btn btn-primary" >submit</button>
         </form>
     </div>
-
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -105,7 +86,5 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/app.js"></script>
-
 </body>
-
 </html>

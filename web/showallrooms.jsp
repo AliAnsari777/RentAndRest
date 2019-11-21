@@ -18,9 +18,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Taviraj:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -43,58 +40,48 @@
         div.container{
             margin: 5%;
         }
-        button.btn-primary{
-            margin: 3%;
-        }
     </style>
 </head>
 
 <body>
     <%@ include file="fragment/header.html" %>
 
-    <!-- Page Preloder -->
+<!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
     <div class="container">
-        <legend >Add new guest </legend>
-        <form action="addGuestController" method="post">
+        <h1>All Available Rooms</h1>
 
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName"  id="firstName" class="form-control" required/></div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text"  id="lastName" name="lastName" class="form-control" required /></div>
-            <div class="form-group">
-                <label for="docType">Doc Type</label>
-                <input type="text" name="docType" id="docType" class="form-control" required/></div>
-            <div class="form-group">
-                <label for="docNumber">Doc Number</label>
-                <input type="text" name="docNumber" id="docNumber" class="form-control" required /></div>
-            <div class="form-group">
-                <label for="rating">rating</label>
-                <input type="number" name="rating"  id="rating"class="form-control" /></div>
-            <div class="form-group">
-                <label for="procedence">procedence</label>
-                <input type="text" name="procedence"  id="procedence"class="form-control" required/></div>
-            <div class="form-group">
-                <label for="language">language</label>
-                <input type="text" name="language"  id="language"class="form-control"  required/></div>
-            <div class="form-group">
-                <label for="note">note</label>
-                <input type="text" name="note"  id="note"class="form-control" required/></div>
+        <table class="table table-striped">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Description</th>
+            <th>Actions</th>
+        <c:forEach items="${rooms}" var="element" >
+            <tr>
+                <td>${element.id}</td>
+                <td>${element.title}</td>
+                <td>${element.number}</td>
+                <td>${element.description}</td>
+                <td>
+                    <a style="color:#007bff" href="EditRoom?id=${element.id}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#007bff" href="DeleteRoom?id=${element.id}" >Delete</a>
+                </td>
 
-            <div><label for="guestName">guest Name</label>
-            <input type="text" name="guestName"  id="guestName"class="form-control" required/></div>
+            </tr>
+        </c:forEach>
+        </table>
 
-            <input hidden type="text" id="msg" value="${msg}" />
-            <button type="submit" class="btn btn-primary" >submit</button>
-        </form>
     </div>
 
-
+    <footer class="footer fixed-bottom container">
+        <hr>
+        <p>&copy; 2019 Maharaishi university of management.</p>
+    </footer>
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -105,7 +92,5 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/app.js"></script>
-
 </body>
-
 </html>

@@ -1,7 +1,8 @@
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:if test="${logged != 'OK'}">
+    <c:redirect url="login.html"></c:redirect>
+</c:if>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,13 +41,7 @@
             margin-left: 3%;
         }
     </style>
-    <script>
-        $(document).ready(function () {
-
-        })
-    </script>
 </head>
-
 <body>
     <%@ include file="fragment/header.html" %>
 
@@ -57,10 +52,10 @@
     </div>
 
     <div class="container" style="margin: 5%">
-        <form action="/RentAndRest/Booking" method="post" id="booking">
+        <form action="book" method="post" id="booking">
             <div class="form-group">
                 <label>Room ID</label>
-                <select class="form-control" name="roomId" id="exampleSelect1">
+                <select class="form-control" name="roomId" id="exampleSelect1" >
                    <c:forEach var="room" items="${roomList}">
                         <tr>
                             <option value="<c:out value="${room.id}"></c:out>">
@@ -72,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label>Guest ID</label>
-                <select class="form-control" name="guestId" id="exampleSelect2">
+                <select class="form-control" name="guestId" id="exampleSelect2" >
                     <c:forEach var="guest" items="${guestList}">
                         <tr>
                             <option value="<c:out value="${guest.id}"></c:out>"><c:out value="${guest.firstName}"></c:out></option>
@@ -83,19 +78,19 @@
 
             <div class="form-group">
                 <label>Number of guests</label>
-                <input type="text" name="numberOfGuests" class="form-control" /></div>
+                <input type="text" name="numberOfGuests" class="form-control" required/></div>
             <div class="form-group">
                 <label>Checkin Date</label>
-                <input type="text" name="checkinDate" id="checkinDate" placeholder="yyyy-mm-dd" class="form-control" /></div>
+                <input type="text" name="checkinDate" id="checkinDate" placeholder="yyyy-mm-dd" class="form-control" required/></div>
             <div class="form-group">
                 <label>Checkin Time</label>
-                <input type="time" name="checkinTime" class="form-control" /></div>
+                <input type="time" name="checkinTime" class="form-control" required/></div>
             <div class="form-group">
                 <label>Checkout Date</label>
-                <input type="text" name="checkoutDate" id="checkoutDate" placeholder="yyyy-mm-dd" class="form-control" /></div>
+                <input type="text" name="checkoutDate" id="checkoutDate" placeholder="yyyy-mm-dd" class="form-control" required/></div>
             <div class="form-group">
                 <label>Checkout Time</label>
-                <input type="time" name="checkoutTime" class="form-control" />
+                <input type="time" name="checkoutTime" class="form-control" required/>
                 <input hidden type="text" id="msg" value="${msg}" />
             </div>
             <button type="submit" class="btn btn-primary" id="submit" >Book</button>
